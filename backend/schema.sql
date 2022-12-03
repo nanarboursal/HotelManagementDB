@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS GUEST;
+
 CREATE TABLE GUEST (
     Guest_ID char(5) not null,
     First_Name varchar(30) not null,
@@ -8,6 +10,8 @@ CREATE TABLE GUEST (
     PRIMARY KEY(Guest_ID)
 );
 
+DROP TABLE IF EXISTS CREDIT_CARD;
+
 CREATE TABLE CREDIT_CARD(
     Credit_Card_ID char(5) not null,
     Card_Number char(16) not null,
@@ -16,6 +20,8 @@ CREATE TABLE CREDIT_CARD(
     Card_Type varchar(15) not null,
     PRIMARY KEY(Credit_Card_ID)
 );
+
+DROP TABLE IF EXISTS BILL;
 
 CREATE TABLE BILL(
     Bill_ID char(5) not null,
@@ -29,6 +35,8 @@ CREATE TABLE BILL(
     CONSTRAINT bill_cc_fk FOREIGN KEY(Credit_Card_ID) REFERENCES CREDIT_CARD(Credit_Card_ID)
 );
 
+DROP TABLE IF EXISTS ROOM;
+
 CREATE TABLE ROOM(
     Room_Number int not null,
     Availability boolean not null,
@@ -36,6 +44,8 @@ CREATE TABLE ROOM(
     Max_Occupancy int not null,
     PRIMARY KEY(Room_Number)
 );
+
+DROP TABLE IF EXISTS RESERVATION;
 
 CREATE TABLE RESERVATION(
     Reservation_ID char(5) not null,
@@ -50,6 +60,8 @@ CREATE TABLE RESERVATION(
     CONSTRAINT res_guest_fk FOREIGN KEY(Guest_ID) REFERENCES GUEST(Guest_ID),
 );
 
+DROP TABLE IF EXISTS BOOKED_ROOMS;
+
 CREATE TABLE BOOKED_ROOMS(
     Reservation_ID char(5) not null,
     Room_Number char(5) not null,
@@ -57,6 +69,8 @@ CREATE TABLE BOOKED_ROOMS(
     CONSTRAINT booked_res_fk FOREIGN KEY(Reservation_ID) REFERENCES RESERVATION(Reservation_ID),
     CONSTRAINT booked_room_fk FOREIGN KEY(Room_Number) REFERENCES ROOM(Room_Number)
 );
+
+DROP TABLE IF EXISTS EMPLOYEE;
 
 CREATE TABLE EMPLOYEE(
     Employee_ID char(5) not null,
@@ -70,6 +84,8 @@ CREATE TABLE EMPLOYEE(
     PRIMARY KEY(Employee_ID)
 );
 
+DROP TABLE IF EXISTS PAYCHECK;
+
 CREATE TABLE PAYCHECK(
     Paycheck_ID char(5) not null,
     Employee_ID char(5) not null,
@@ -77,6 +93,8 @@ CREATE TABLE PAYCHECK(
     PRIMARY KEY(Paycheck_ID),
     CONSTRAINT pay_emp_fk FOREIGN KEY(Employee_ID) REFERENCES EMPLOYEE(Employee_ID)
 );
+
+DROP TABLE IF EXISTS TIMECARD;
 
 CREATE TABLE TIMECARD(
     Timecard_ID char(5) not null,
