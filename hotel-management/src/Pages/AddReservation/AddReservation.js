@@ -1,6 +1,6 @@
 import React from "react";
 import "./add-reservation.css";
-import AvailableRooms from "../../Components/Navigation/AvailableRooms/AvailableRooms";
+import AvailableRooms from "../../Components/AvailableRooms/AvailableRooms";
 import { Col, Button, Form, FormGroup, Label, Input, FormText, Row, Container } from 'reactstrap';
 
 export default class AddReservations extends React.Component {
@@ -32,7 +32,6 @@ export default class AddReservations extends React.Component {
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
-
     componentDidMount() {
         this.initTheme();
     }

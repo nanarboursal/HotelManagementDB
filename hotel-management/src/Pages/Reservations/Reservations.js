@@ -1,6 +1,7 @@
 import React from "react";
-// import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import "./reservations.css";
+import ReservationCard from "../../Components/ReservationCard/ReservationCard";
 
 export default class Reservations extends React.Component {
     constructor(props) {
@@ -19,8 +20,15 @@ export default class Reservations extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Here is the reservations page</h1>
+            <div className="reservations-background">
+                <h1>All Reservations</h1>
+                <Container>
+                    <Row>
+                        <Col>
+                            <ReservationCard />
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         );
     }
