@@ -21,9 +21,14 @@ export default class Reservations extends React.Component {
     render() {
         return (
             <div className="reservations-background">
-                <h1>All Reservations</h1>
+                <h1 style={{ padding: "15px" }}>All Reservations</h1>
                 <Container>
                     <Row>
+                        <Col>
+                            <ReservationCard />
+                        </Col>
+                    </Row>
+                    <Row className="cards-structure">
                         <Col>
                             <ReservationCard />
                         </Col>

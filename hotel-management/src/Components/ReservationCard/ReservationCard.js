@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, CardTitle, CardText } from "reactstrap";
+import { Card, CardBody, CardTitle, CardText, Container, Row, Col } from "reactstrap";
 
 import "./reservation-card.css";
 
@@ -8,19 +8,32 @@ export const ReservationCard = props => {
         <div className="card-wrapper">
             <Card>
                 <CardBody>
-                    <CardTitle className="card-text-diff">
-                        Reservation Name
-                    </CardTitle>
-                    <CardTitle className="card-text-diff">
-                        More Stuff
-                    </CardTitle>
-                    <CardTitle className="card-text-diff">
-                        Hello
-                    </CardTitle>
-                    <hr />
-                    <CardText className="card-text-exercises">
-                        lolz
-                    </CardText>
+                    <Container>
+                        <Row>
+                            <Col>
+                                <CardTitle className="card-text-diff">
+                                    Reservation Name
+                                </CardTitle>
+                            </Col>
+                            <Col>
+                                <CardTitle className="card-text-diff">
+                                    More Stuff
+                                </CardTitle>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <CardTitle className="card-text-diff">
+                                    Reservation Name
+                                </CardTitle>
+                            </Col>
+                            <Col>
+                                <CardTitle className="card-text-diff">
+                                    More Stuff
+                                </CardTitle>
+                            </Col>
+                        </Row>
+                    </Container>
                 </CardBody>
             </Card>
         </div>
