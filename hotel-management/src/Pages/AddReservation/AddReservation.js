@@ -6,7 +6,31 @@ import { Col, Button, Form, FormGroup, Label, Input, FormText, Row, Container } 
 export default class AddReservations extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            firstName: "",
+            lastName: "",
+            address: "",
+            email: "",
+            phoneNumber: "",
+            cardName: "",
+            cardNumber: "",
+            cardType: "",
+            expirationDate: "",
+            numRooms: 0,
+            roomsSelected: [],
+            numGuests: 0,
+            preferences: "",
+            bookingDate: "",
+            bookingTime: "",
+            reserveStartDate: "",
+            reserveEndDate: ""
+        };
+
+        this.onChange = this.onChange.bind(this);
+    }
+
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     componentDidMount() {
@@ -18,10 +42,19 @@ export default class AddReservations extends React.Component {
         theme && this.setState({ theme: theme });
     }
 
+    submitForm() {
+        console.log(this.state.cardName);
+        console.log(this.state.cardNumber);
+        console.log(this.state.cardType);
+        console.log(this.state.expirationDate);
+        alert("Congrats, reservation has been booked.");
+    }
+
     render() {
         return (
             <div className="add-reservation-header">
                 <h1>Add Reservation</h1>
+                <p>Available Rooms</p>
                 <AvailableRooms />
                 <Container>
                     <Row>
@@ -35,31 +68,31 @@ export default class AddReservations extends React.Component {
                                 <FormGroup row>
                                     <Label for="firstName" sm={5}>First Name</Label>
                                     <Col sm={5}>
-                                        <Input type="text" name="firstName" id="firstName" placeholder="Enter first name." />
+                                        <Input value={this.state.firstName} onChange={this.onChange} type="text" name="firstName" id="firstName" placeholder="Enter first name." />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label for="lastName" sm={5}>Last Name</Label>
                                     <Col sm={5}>
-                                        <Input type="text" name="lastName" id="lastName" placeholder="Enter last name." />
+                                        <Input value={this.state.lastName} onChange={this.onChange} type="text" name="lastName" id="lastName" placeholder="Enter last name." />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label for="email" sm={5}>Email</Label>
                                     <Col sm={5}>
-                                        <Input type="email" name="email" id="email" placeholder="Enter email." />
+                                        <Input value={this.state.email} onChange={this.onChange} type="email" name="email" id="email" placeholder="Enter email." />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label for="phoneNumber" sm={5}>Phone Number</Label>
                                     <Col sm={3}>
-                                        <Input type="phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Enter phone number." />
+                                        <Input value={this.state.phoneNumber} onChange={this.onChange} type="phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Enter phone number." />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label for="address" sm={5}>Address</Label>
                                     <Col sm={5}>
-                                        <Input type="address" name="address" id="address" placeholder="Enter address." />
+                                        <Input value={this.state.address} onChange={this.onChange} type="address" name="address" id="address" placeholder="Enter address." />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
@@ -70,7 +103,7 @@ export default class AddReservations extends React.Component {
                                 <FormGroup row>
                                     <Label for="cardName" sm={5}>Name on Card</Label>
                                     <Col sm={5}>
-                                        <Input type="text" name="cardName" id="cardName" placeholder="Enter cardholder name." />
+                                        <Input value={this.state.cardName} onChange={this.onChange} type="text" name="cardName" id="cardName" placeholder="Enter cardholder name." />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup tag="fieldset" row >
@@ -83,20 +116,20 @@ export default class AddReservations extends React.Component {
                                             </Label>
                                         </FormGroup>
                                         <FormGroup check>
-                                            <Label check>
-                                                <Input type="radio" name="radio2" />{' '}
+                                            <Label >
+                                                <Input type="radio" name="radio1" />{' '}
                                                 Discover
                                             </Label>
                                         </FormGroup>
                                         <FormGroup check>
                                             <Label check>
-                                                <Input type="radio" name="radio3" />{' '}
+                                                <Input type="radio" name="radio1" />{' '}
                                                 MasterCard
                                             </Label>
                                         </FormGroup>
                                         <FormGroup check>
                                             <Label check>
-                                                <Input type="radio" name="radio4" />{' '}
+                                                <Input type="radio" name="radio1" />{' '}
                                                 American Express
                                             </Label>
                                         </FormGroup>
@@ -105,13 +138,13 @@ export default class AddReservations extends React.Component {
                                 <FormGroup row>
                                     <Label for="cardNumber" sm={5}>Card Number</Label>
                                     <Col sm={3}>
-                                        <Input type="text" name="cardNumber" id="cardNumber" placeholder="Enter card number." />
+                                        <Input value={this.state.cardNumber} onChange={this.onChange} type="text" name="cardNumber" id="cardNumber" placeholder="Enter card number." />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label for="expDate" sm={5}>Expiration Date</Label>
                                     <Col sm={2}>
-                                        <Input type="date" name="expDate" id="expDate" placeholder="date placeholder" />
+                                        <Input type="date" name="date" id="expDate" placeholder="date placeholder" />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
@@ -122,13 +155,13 @@ export default class AddReservations extends React.Component {
                                 <FormGroup row>
                                     <Label for="startDate" sm={5}>Reservation Start Date</Label>
                                     <Col sm={2}>
-                                        <Input type="date" name="startDate" id="startDate" placeholder="date placeholder" />
+                                        <Input type="date" name="date" id="startDate" placeholder="date placeholder" />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label for="endDate" sm={5}>Reservation End Date</Label>
                                     <Col sm={2}>
-                                        <Input type="date" name="endDate" id="endDate" placeholder="date placeholder" />
+                                        <Input type="date" name="date" id="endDate" placeholder="date placeholder" />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
@@ -157,7 +190,7 @@ export default class AddReservations extends React.Component {
                                 </FormGroup>
                                 <FormGroup check row>
                                     <Col sm={{ size: 10, offset: 2 }}>
-                                        <Button className="task-button" outline color="warning">
+                                        <Button onClick={() => this.submitForm()} className="task-button" outline color="warning">
                                             Submit
                                         </Button>{' '}
                                     </Col>
@@ -166,7 +199,7 @@ export default class AddReservations extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-            </div>
+            </div >
         );
     }
 }

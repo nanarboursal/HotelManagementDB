@@ -8,33 +8,29 @@ export default class AvailableRooms extends React.Component {
             <Container>
                 <Row>
                     <Col>
-                        <Table bordered hover>
+                        <Table bordered dark>
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
+                                    <th>Room Number</th>
+                                    <th>Price Per Night USD</th>
+                                    <th>Max Occupancy</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
+                                    <td>89.45</td>
+                                    <td>6</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
+                                    <td>72.25</td>
+                                    <td>4</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
+                                    <td>82.45</td>
+                                    <td>5</td>
                                 </tr>
                             </tbody>
 
