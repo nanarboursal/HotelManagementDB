@@ -14,7 +14,6 @@ CREATE TABLE CREDIT_CARD(
     Card_Name varchar(50) not null,
     Expiration_Date date not null,
     Card_Type varchar(15) not null,
-    Security_Code varchar(4) not null,
     PRIMARY KEY(Credit_Card_ID)
 );
 
