@@ -21,20 +21,6 @@ CREATE TABLE CREDIT_CARD(
     PRIMARY KEY(Credit_Card_ID)
 );
 
-DROP TABLE IF EXISTS BILL;
-
-CREATE TABLE BILL(
-    Bill_ID char(5) not null,
-    Guest_ID char(5) not null,
-    Credit_Card_ID char(5) not null,
-    Total_Amount decimal(10, 2) not null,
-    Invoice_Date date not null,
-    Payment_Date date not null,
-    PRIMARY KEY(Bill_ID),
-    CONSTRAINT bill_guest_fk FOREIGN KEY(Guest_ID) REFERENCES GUEST(Guest_ID),
-    CONSTRAINT bill_cc_fk FOREIGN KEY(Credit_Card_ID) REFERENCES CREDIT_CARD(Credit_Card_ID)
-);
-
 DROP TABLE IF EXISTS ROOM;
 
 CREATE TABLE ROOM(
@@ -51,12 +37,13 @@ CREATE TABLE RESERVATION(
     Reservation_ID char(5) not null,
     No_Rooms int not null,
     Guest_ID char(5) not null,
-    No_People int not null,
+    No_Guests int not null,
     Preferences varchar(50),
     Booking_Date date not null,
     Booking_Time time not null,
     Reservation_Start_Date date not null,
     Reservation_End_Date date not null,
+    No_Nights int not null,
     CONSTRAINT res_guest_fk FOREIGN KEY(Guest_ID) REFERENCES GUEST(Guest_ID),
 );
 
@@ -82,24 +69,4 @@ CREATE TABLE EMPLOYEE(
     Cell_Phone_Number char(13) not null,
     Email varchar(20) not null,
     PRIMARY KEY(Employee_ID)
-);
-
-DROP TABLE IF EXISTS PAYCHECK;
-
-CREATE TABLE PAYCHECK(
-    Paycheck_ID char(5) not null,
-    Employee_ID char(5) not null,
-    Amount_Paid decimal(10, 2) not null,
-    PRIMARY KEY(Paycheck_ID),
-    CONSTRAINT pay_emp_fk FOREIGN KEY(Employee_ID) REFERENCES EMPLOYEE(Employee_ID)
-);
-
-DROP TABLE IF EXISTS TIMECARD;
-
-CREATE TABLE TIMECARD(
-    Timecard_ID char(5) not null,
-    Employee_ID char(5) not null,
-    Hours decimal(10, 2) not null,
-    PRIMARY KEY(Timecard_ID),
-    CONSTRAINT time_emp_fk FOREIGN KEY(Employee_ID) REFERENCES EMPLOYEE(Employee_ID)
 );
