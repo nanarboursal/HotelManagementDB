@@ -30,7 +30,10 @@ export default class Home extends React.Component {
                     <Link className="button-link" to="/reservations">See All Reservations</Link>
                 </Button>{' '}
                 <Button className="task-button" outline color="warning">
-                    <Link className="button-link" to="/employees">Manage Employee Information</Link>
+                    <Link className="button-link" to="/employees">See Employee Information</Link>
+                </Button>{' '}
+                <Button className="task-button" outline color="warning">
+                    <Link className="button-link" to="/billing">See Billing Information</Link>
                 </Button>{' '}
             </div>
         );
