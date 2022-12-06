@@ -1,16 +1,6 @@
 import axios from "axios";
 import { websitePrefix } from "./api.constants";
 
-export const getGuest = () => {
-	return axios({
-		url: websitePrefix + "api/guest",
-		method: "GET",
-		headers: { "Content-Type": "application/json" },
-		mode: "cors",
-	})
-}
-
-
 export const getEmployee = () => {
 	return axios({
 		url: websitePrefix + "api/employee",
