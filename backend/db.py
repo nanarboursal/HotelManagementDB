@@ -117,6 +117,7 @@ class Executer:
 
 if __name__ == '__main__':
     executer = Executer("shipping_db.sqlite")
+<<<<<<< HEAD
     
 #GUEST
 #     command_list = ["guest_ID VARCHAR(10) PRIMARY KEY",
@@ -243,6 +244,126 @@ if __name__ == '__main__':
                                   "email",
                                   "phone_number"))
 
+=======
+
+    command_list = ["guest_ID VARCHAR(10) PRIMARY KEY",
+                    "first_name VARCHAR(50) NOT NULL",
+                    "last_name VARCHAR(50) NOT NULL",
+                    "address VARCHAR(50) NOT NULL",
+                    "email VARCHAR(25) NOT NULL",
+                    "phone_number VARCHAR(12) NOT NULL"]
+
+    # executer.insert_table("GUEST", *command_list)
+    # print("creation done!")
+
+    # executer.insert_into("GUEST",
+    #                      ("123",
+    #                       "John",
+    #                       "Doe",
+    #                       "123 Fremont St",
+    #                       "John@john@gmail.com",
+    #                       "12345678"),
+    #                      columns=("guest_ID",
+    #                               "first_name",
+    #                               "last_name",
+    #                               "address",
+    #                               "email",
+    #                               "phone_number"))
+
+    # print("insert done!")
+
+    command_list = ["employee_ID VARCHAR(10) PRIMARY KEY",
+                    "first_name VARCHAR(50) NOT NULL",
+                    "last_name VARCHAR(50) NOT NULL",
+                    "address VARCHAR(50) NOT NULL",
+                    "email VARCHAR(25) NOT NULL",
+                    "cell_phone_number VARCHAR(12) NOT NULL",
+                    "role VARCHAR(50) NOT NULL",
+                    "ssn VARCHAR(10) NOT NULL"]
+
+    # executer.insert_table("EMPLOYEE", *command_list)
+    # print("creation done!")
+
+    # executer.insert_into("EMPLOYEE",
+    #                      ("4567",
+    #                       "Mary",
+    #                       "Jones",
+    #                       "189 San Jose St",
+    #                       "Mary.jones@gmail.com",
+    #                       "12145668",
+    #                       "Manager",
+    #                       "93847573"),
+    #                      columns=("employee_ID",
+    #                               "first_name",
+    #                               "last_name",
+    #                               "address",
+    #                               "email",
+    #                               "cell_phone_number",
+    #                               "role",
+    #                               "ssn"))
+
+    command_list = ["Credit_Card_ID VARCHAR(10) PRIMARY KEY",
+                    "Card_Number INT NOT NULL",
+                    "Card_Name VARCHAR(100) NOT NULL",
+                    "Card_Type VARCHAR(100) NOT NULL",
+                    "Expiration_Date DATE NOT NULL"]
+
+    # executer.insert_table("CREDIT_CARD", *command_list)
+    # print("creation done!")
+
+    # executer.insert_into("CREDIT_CARD",
+    #                      ("6675",
+    #                       129939,
+    #                       "Smith Martin",
+    #                       "Visa",
+    #                       "2023-05-06"),
+    #                      columns=("Credit_Card_ID",
+    #                               "Card_Number",
+    #                               "Card_Name",
+    #                               "Card_Type",
+    #                               "Expiration_Date"))
+
+    # command_list = ["Reservation_ID VARCHAR(10) PRIMARY KEY",
+    #                 "No_Rooms INT NOT NULL",
+    #                 "Guest_ID VARCHAR(10) NOT NULL",
+    #                 "Credit_Card_ID VARCHAR(10) NOT NULL",
+    #                 "No_Guests INT NOT NULL",
+    #                 "Preferences VARCHAR(100) NOT NULL",
+    #                 "Booking_Date DATE NOT NULL",
+    #                 "Booking_Time TIME NOT NULL",
+    #                 "Reservation_Start_Date DATE NOT NULL",
+    #                 "Reservation_End_Date DATE NOT NULL",
+    #                 "No_Nights INT NOT NULL",
+    #                 "FOREIGN KEY (Guest_ID) REFERENCES GUEST(Guest_ID)",
+    #                 "FOREIGN KEY (Credit_Card_ID) REFERENCES CREDIT_CARD(Credit_Card_ID)"]
+
+    # executer.insert_table("RESERVATION", *command_list)
+    # print("creation done!")
+
+    executer.insert_into("RESERVATION",
+                         ("3434",
+                          1,
+                          "123",
+                          "6675",
+                          3,
+                          "Please keep water",
+                          "2022-10-01",
+                          "10:00:00",
+                          "2022-10-04",
+                          "2022-10-06",
+                          2),
+                         columns=("Reservation_ID",
+                                  "No_Rooms",
+                                  "Guest_ID",
+                                  "Credit_Card_ID",
+                                  "No_Guests",
+                                  "Preferences",
+                                  "Booking_Date",
+                                  "Booking_Time",
+                                  "Reservation_Start_Date",
+                                  "Reservation_End_Date",
+                                  "No_Nights"))
+>>>>>>> 0ea893a (setup post apis)
 
     executer.commit()
     executer.close_connection()
