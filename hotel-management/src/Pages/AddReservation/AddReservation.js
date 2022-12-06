@@ -195,7 +195,7 @@ export default class AddReservations extends React.Component {
 								<FormGroup row>
 									<Label for="expirationDate" sm={5}>Expiration Date</Label>
 									<Col sm={2}>
-										<Input value={this.state.expirationDate} onChange={this.onChange} type="text" name="expirationDate" id="expirationDate" placeholder="mm-dd-yyyy" />
+										<Input value={this.state.expirationDate} onChange={this.onChange} type="text" name="expirationDate" id="expirationDate" placeholder="yyyy-mm-dd" />
 									</Col>
 								</FormGroup>
 								<FormGroup row>
@@ -206,13 +206,13 @@ export default class AddReservations extends React.Component {
 								<FormGroup row>
 									<Label for="reserveStartDate" sm={5}>Reservation Start Date</Label>
 									<Col sm={2}>
-										<Input value={this.state.reserveStartDate} onChange={this.onChange} type="text" name="reserveStartDate" id="reserveStartDate" placeholder="mm-dd-yyyy" />
+										<Input value={this.state.reserveStartDate} onChange={this.onChange} type="text" name="reserveStartDate" id="reserveStartDate" placeholder="yyyy-mm-dd" />
 									</Col>
 								</FormGroup>
 								<FormGroup row>
 									<Label for="reserveEndDate" sm={5}>Reservation End Date</Label>
 									<Col sm={2}>
-										<Input value={this.state.reserveEndDate} onChange={this.onChange} type="text" name="reserveEndDate" id="reserveEndDate" placeholder="mm-dd-yyyy" />
+										<Input value={this.state.reserveEndDate} onChange={this.onChange} type="text" name="reserveEndDate" id="reserveEndDate" placeholder="yyyy-mm-dd" />
 									</Col>
 								</FormGroup>
 								<FormGroup row>

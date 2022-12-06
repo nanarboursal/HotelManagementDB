@@ -11,7 +11,7 @@ export default class Reservations extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			test: "",
+			test: [],
 			reservation: "",
 			guest: "",
 			creditcard: ""
@@ -81,7 +81,7 @@ class Table extends Component {
 		var heading = this.props.heading;
 		var body = this.props.body;
 		return (
-			<table className ="center-table" style={{ width: 500 }}>
+			<table className ="center-table" style={{ width: 900 }}>
 				<thead >
 					<tr className ='rowLines'>
 						{heading.map(head => <th>{head}</th>)}
