@@ -2,39 +2,54 @@ import React from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import "./reservations.css";
 import ReservationCard from "../../Components/ReservationCard/ReservationCard";
+import { getEmployee } from "../../api/test.api";
 
 export default class Reservations extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			test: ""
+		};
+	}
 
-    componentDidMount() {
-        this.initTheme();
-    }
+	componentDidMount() {
+		console.log("componentDidMount entered")
 
-    initTheme() {
-        let theme = JSON.parse(localStorage.getItem("theme"));
-        theme && this.setState({ theme: theme });
-    }
+		getEmployee().then(response => {
+			console.log("get test entered")
+			console.log(response)
+			this.setState({ test: response.request.response })
+			console.log("yoyo", this.state.test)
 
-    render() {
-        return (
-            <div className="reservations-background">
-                <h1 style={{ padding: "15px" }}>All Reservations</h1>
-                <Container>
-                    <Row>
-                        <Col>
-                            <ReservationCard />
-                        </Col>
-                    </Row>
-                    <Row className="cards-structure">
-                        <Col>
-                            <ReservationCard />
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-        );
-    }
+		})
+		this.initTheme();
+	}
+
+	initTheme() {
+		let theme = JSON.parse(localStorage.getItem("theme"));
+		theme && this.setState({ theme: theme });
+	}
+
+	render() {
+		return (
+			<div className="reservations-background">
+				<h1 style={{ padding: "15px" }}>All Reservations!!</h1>
+				<p style={{ color: "white", padding: "15px" }}>
+					TEST API RESULTS: {this.state.test}
+				</p>
+				<Container>
+					<Row>
+						<Col>
+							<ReservationCard />
+						</Col>
+					</Row>
+					<Row className="cards-structure">
+						<Col>
+							<ReservationCard />
+						</Col>
+					</Row>
+				</Container>
+			</div>
+		);
+	}
 }
