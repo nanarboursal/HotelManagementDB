@@ -16,17 +16,23 @@ export default class AddReservations extends React.Component {
             cardNumber: "",
             cardType: "",
             expirationDate: "",
-            numRooms: 0,
+            numRooms: 0, // might need to hardcode
             roomsSelected: [],
+            numNights: 0,
             numGuests: 0,
             preferences: "",
-            bookingDate: "",
-            bookingTime: "",
+            bookingDate: "", // might need to hardcode
+            bookingTime: "", // might need to hardcode
             reserveStartDate: "",
             reserveEndDate: ""
         };
 
         this.onChange = this.onChange.bind(this);
+    }
+
+    getSelectedRooms = (e) => {
+        let value = Array.from(e.target.selectedOptions, option => option.value);
+        this.setState({ roomsSelected: value });
     }
 
     onChange(e) {
@@ -42,10 +48,12 @@ export default class AddReservations extends React.Component {
     }
 
     submitForm() {
-        console.log(this.state.cardName);
-        console.log(this.state.cardNumber);
-        console.log(this.state.cardType);
-        console.log(this.state.expirationDate);
+        var currentDateTime = new Date();
+        var curDate = currentDateTime.toLocaleDateString().replaceAll("/", "-");
+        var curTime = currentDateTime.getHours() + ":" + currentDateTime.getMinutes + ":" + currentDateTime.getSeconds;
+        this.setState({ bookingDate: curDate });
+        this.setState({ bookingTime: curTime });
+        this.setState({ numRooms: this.state.roomsSelected.length });
         alert("Congrats, reservation has been booked.");
     }
 
@@ -105,33 +113,10 @@ export default class AddReservations extends React.Component {
                                         <Input value={this.state.cardName} onChange={this.onChange} type="text" name="cardName" id="cardName" placeholder="Enter cardholder name." />
                                     </Col>
                                 </FormGroup>
-                                <FormGroup tag="fieldset" row >
-                                    <legend className="col-form-label col-sm-5">Card Type</legend>
-                                    <Col sm={2}>
-                                        <FormGroup check>
-                                            <Label check>
-                                                <Input type="radio" name="radio1" />{' '}
-                                                Visa
-                                            </Label>
-                                        </FormGroup>
-                                        <FormGroup check>
-                                            <Label >
-                                                <Input type="radio" name="radio1" />{' '}
-                                                Discover
-                                            </Label>
-                                        </FormGroup>
-                                        <FormGroup check>
-                                            <Label check>
-                                                <Input type="radio" name="radio1" />{' '}
-                                                MasterCard
-                                            </Label>
-                                        </FormGroup>
-                                        <FormGroup check>
-                                            <Label check>
-                                                <Input type="radio" name="radio1" />{' '}
-                                                American Express
-                                            </Label>
-                                        </FormGroup>
+                                <FormGroup row >
+                                    <Label for="cardType" sm={5}>Card Type</Label>
+                                    <Col sm={3}>
+                                        <Input value={this.state.cardType} onChange={this.onChange} type="text" name="cardType" id="cardType" placeholder="Visa, MasterCard, Amex, Discover" />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
@@ -141,9 +126,9 @@ export default class AddReservations extends React.Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="expDate" sm={5}>Expiration Date</Label>
+                                    <Label for="expirationDate" sm={5}>Expiration Date</Label>
                                     <Col sm={2}>
-                                        <Input type="date" name="date" id="expDate" placeholder="date placeholder" />
+                                        <Input value={this.state.expirationDate} onChange={this.onChange} type="text" name="expirationDate" id="expirationDate" placeholder="mm-dd-yyyy" />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
@@ -152,39 +137,45 @@ export default class AddReservations extends React.Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="startDate" sm={5}>Reservation Start Date</Label>
+                                    <Label for="reserveStartDate" sm={5}>Reservation Start Date</Label>
                                     <Col sm={2}>
-                                        <Input type="date" name="date" id="startDate" placeholder="date placeholder" />
+                                        <Input value={this.state.reserveStartDate} onChange={this.onChange} type="text" name="reserveStartDate" id="reserveStartDate" placeholder="mm-dd-yyyy" />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="endDate" sm={5}>Reservation End Date</Label>
+                                    <Label for="reserveEndDate" sm={5}>Reservation End Date</Label>
                                     <Col sm={2}>
-                                        <Input type="date" name="date" id="endDate" placeholder="date placeholder" />
+                                        <Input value={this.state.reserveEndDate} onChange={this.onChange} type="text" name="reserveEndDate" id="reserveEndDate" placeholder="mm-dd-yyyy" />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="roomSelect" sm={5}>Room Number Selection</Label>
+                                    <Label for="numNights" sm={5}>Number Of Nights</Label>
+                                    <Col sm={2}>
+                                        <Input value={this.state.numNights} onChange={this.onChange} type="number" name="numNights" id="numNights" placeholder="No. Nights" />
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Label for="roomsSelected" sm={5}>Room Number Selection</Label>
                                     <Col sm={3}>
-                                        <Input type="select" name="roomSelect" id="roomSelect" multiple >
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <Input value={this.state.roomsSelected} onChange={this.getSelectedRooms} type="select" name="roomsSelected" id="roomsSelected" multiple >
+                                            <option value={1}>1</option>
+                                            <option value={2}>2</option>
+                                            <option value={3}>3</option>
+                                            <option value={4}>4</option>
+                                            <option value={5}>5</option>
                                         </Input>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="noGuests" sm={5}>Number Of Guests</Label>
+                                    <Label for="numGuests" sm={5}>Number Of Guests</Label>
                                     <Col sm={2}>
-                                        <Input type="number" name="NoGuests" id="NoGuests" placeholder="No. Guests" />
+                                        <Input value={this.state.numGuests} onChange={this.onChange} type="number" name="numGuests" id="numGuests" placeholder="No. Guests" />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label for="preferences" sm={5}>Preferences</Label>
                                     <Col sm={5}>
-                                        <Input type="textarea" name="preferences" id="preferences" />
+                                        <Input value={this.state.preferences} onChange={this.onChange} type="textarea" name="preferences" id="preferences" />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup check row>
@@ -202,34 +193,3 @@ export default class AddReservations extends React.Component {
         );
     }
 }
-
-/*
-
-GUEST
-Guest_ID
-First_Name
-Last_Name
-Address
-Email
-Phone_Number
-
-CREDIT_CARD
-Credit_Card_ID
-Card_Number
-Card_Name
-Card_Type
-Expiration_Date
-Security_Code
-
-RESERVATION
-Reservation_ID
-No_Rooms
-Guest_ID
-No_People
-Preferences
-Booking_Date
-Booking_Time
-Reservation_Start_Date
-Reservation_End_Date
-
-*/

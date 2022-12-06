@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Row, Col, Button } from "reactstrap";
-import EmployeeCard from "../../Components/EmployeeCard/EmployeeCard";
-import "./employees.css";
+import BillingCard from "../../Components/BillingCard/BillingCard";
+import "./billing.css";
 
-export default class Employees extends React.Component {
+export default class Billing extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -20,17 +20,17 @@ export default class Employees extends React.Component {
 
     render() {
         return (
-            <div className="employees-background">
-                <h1 style={{ padding: "15px" }}>All Employees</h1>
+            <div className="billing-background">
+                <h1 style={{ padding: "15px" }}>All Billing Information</h1>
                 <Container>
                     <Row>
                         <Col>
-                            <EmployeeCard />
+                            <BillingCard />
                         </Col>
                     </Row>
-                    <Row className="emp-cards-structure">
+                    <Row className="bill-cards-structure">
                         <Col>
-                            <EmployeeCard />
+                            <BillingCard />
                         </Col>
                     </Row>
                 </Container>
