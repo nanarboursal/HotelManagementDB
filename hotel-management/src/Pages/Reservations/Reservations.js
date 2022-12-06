@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import "./reservations.css";
 import ReservationCard from "../../Components/ReservationCard/ReservationCard";
-import { getTest } from "../../api/test.api";
+import { getEmployee } from "../../api/test.api";
 
 export default class Reservations extends React.Component {
 	constructor(props) {
@@ -15,8 +15,9 @@ export default class Reservations extends React.Component {
 	componentDidMount() {
 		console.log("componentDidMount entered")
 
-		getTest().then(response => {
+		getEmployee().then(response => {
 			console.log("get test entered")
+			console.log(response)
 			this.setState({ test: response.request.response })
 			console.log("yoyo", this.state.test)
 
