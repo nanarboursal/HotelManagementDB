@@ -65,16 +65,13 @@ export default class Reservations extends React.Component {
 			<div className="reservations-background">
 				<h1 style={{ padding: "15px" }}>All Reservations!!</h1>
 				<p style={{ color: "white", padding: "15px" }}>
-					TEST API RESULTS: {this.state.test}
+					GUEST RESULTS: {this.state.guest}
 				</p>
 				<p style={{ color: "white", padding: "15px" }}>
-					TEST API RESULTS: {this.state.guest}
+					CREDIT RESULTS: {this.state.creditcard}
 				</p>
 				<p style={{ color: "white", padding: "15px" }}>
-					TEST API RESULTS: {this.state.creditcard}
-				</p>
-				<p style={{ color: "white", padding: "15px" }}>
-					TEST API RESULTS: {this.state.reservation}
+					RESERVATIONS RESULTS: {this.state.reservation}
 				</p>
 				<Container>
 					<Row>

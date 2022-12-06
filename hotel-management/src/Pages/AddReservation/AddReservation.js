@@ -54,8 +54,8 @@ export default class AddReservations extends React.Component {
 		var currentDateTime = new Date();
 		var curDate = currentDateTime.toLocaleDateString().replaceAll("/", "-");
 		var curTime = currentDateTime.getHours() + ":" + currentDateTime.getMinutes + ":" + currentDateTime.getSeconds;
-		this.setState({ bookingDate: "2023-02-02" });
-		this.setState({ bookingTime: "2023-02-02" });
+		this.setState({ bookingDate: curDate });
+		this.setState({ bookingTime: curTime });
 		this.setState({ numRooms: 3 });
 		var reservation_ID = (Math.floor(1000 + Math.random() * 9000000000)).toString()
 		var guest_ID = (Math.floor(1000 + Math.random() * 9000000000)).toString()
@@ -103,8 +103,8 @@ export default class AddReservations extends React.Component {
 		postReservation(
 			reservation_ID,
 			this.state.numRooms,
-			this.state.guest_ID,
-			this.state.credit_card_ID,
+			guest_ID,
+			credit_card_ID,
 			this.state.numGuests,
 			this.state.preferences,
 			this.state.bookingDate,

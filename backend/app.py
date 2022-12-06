@@ -4,7 +4,7 @@ from flask_cors import CORS, cross_origin
 from db import Executer
 import math
 
-app = Flask(__name_, static_url_path='/')
+app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
@@ -76,17 +76,17 @@ def insert_reservation():
     ex = Executer("shipping_db.sqlite")
 
     ex.insert_into("reservation",
-                   (request.form["Reservation_ID"],
-                    request.form["No_Rooms"],
-                    request.form["Guest_ID"],
-                    request.form["Credit_Card_ID"],
-                    request.form["No_Guests"],
-                    request.form["Preferences"],
-                    request.form["Booking_Date"],
-                    request.form["Booking_Time"],
-                    request.form["Reservation_Start_Date"],
-                    request.form["Reservation_End_Date"],
-                    request.form["No_Nights"]),
+                   (request.get_json()["Reservation_ID"],
+                    request.get_json()["No_Rooms"],
+                    request.get_json()["Guest_ID"],
+                    request.get_json()["Credit_Card_ID"],
+                    request.get_json()["No_Guests"],
+                    request.get_json()["Preferences"],
+                    request.get_json()["Booking_Date"],
+                    request.get_json()["Booking_Time"],
+                    request.get_json()["Reservation_Start_Date"],
+                    request.get_json()["Reservation_End_Date"],
+                    request.get_json()["No_Nights"]),
                    columns=None)
 
     ex.commit()
@@ -102,11 +102,11 @@ def insert_creditcard():
     ex = Executer("shipping_db.sqlite")
 
     ex.insert_into("CREDIT_CARD",
-                   (request.form["Credit_Card_ID"],
-                    request.form["Card_Number"],
-                    request.form["Card_Name"],
-                    request.form["Card_Type"],
-                    request.form["Expiration_Date"]),
+                   (request.get_json()["Credit_Card_ID"],
+                    request.get_json()["Card_Number"],
+                    request.get_json()["Card_Name"],
+                    request.get_json()["Card_Type"],
+                    request.get_json()["Expiration_Date"]),
                    columns=None)
 
     ex.commit()
@@ -121,15 +121,14 @@ def insert_creditcard():
 def insert_guest():
     ex = Executer("shipping_db.sqlite")
     print("hellloo")
-
-    guestID = request.form["guest_ID"]
-    firstname = request.form["first_name"]
-    lastname = request.form["last_name"]
-    address = request.form["address"]
-    email = request.form["email"]
-    phonenumber = request.form["phone_number"]
-
-    print(guestID)
+    print("")
+    print(request.get_json()["guest_ID"])
+    guestID = request.get_json()["guest_ID"]
+    firstname = request.get_json()["first_name"]
+    lastname = request.get_json()["last_name"]
+    address = request.get_json()["address"]
+    email = request.get_json()["email"]
+    phonenumber = request.get_json()["phone_number"]
 
     ex.insert_into("GUEST",
                    (guestID,
