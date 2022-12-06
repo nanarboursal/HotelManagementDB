@@ -40,3 +40,16 @@ def get_employee():
     ex.close_connection()
 
     return jsonify(data[-1])
+
+@app.route("/api/billing", methods=["GET"])
+def get_credit_card():
+    ex = Executer("shipping_db.sqlite")
+
+    data = ex.fetch_data("CREDIT_CARD")
+    print("CREDIT_CARD data:")
+    print(data)
+
+    ex.commit()
+    ex.close_connection()
+
+    return jsonify(data[-1])

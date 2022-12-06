@@ -7,3 +7,18 @@
 .cards-structure {
     margin-top: 1%;
 }
+.card-wrapper {
+    flex-wrap: wrap;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    min-width: 400px;
+    cursor: default !important;
+}
+.center-table{
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.rowLines{
+    border-top: 1px solid black; 
+    border-bottom: 1px solid black;
+}
