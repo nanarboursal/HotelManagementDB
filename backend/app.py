@@ -2,8 +2,9 @@ import sqlite3
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from db import Executer
+import math
 
-app = Flask(__name__)
+app = Flask(__name_, static_url_path='/')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 

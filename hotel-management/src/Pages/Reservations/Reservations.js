@@ -2,13 +2,27 @@ import React, { Component } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import "./reservations.css";
 import ReservationCard from "../../Components/ReservationCard/ReservationCard";
+<<<<<<< HEAD
 import { getGuest } from "../../api/test.api";
+=======
+import { getEmployee } from "../../api/employee.api";
+import { getReservation } from "../../api/reservation.api";
+import { getCreditCard } from "../../api/credit_card.api";
+import { getGuest } from "../../api/guest.api";
+>>>>>>> 0ea893a (setup post apis)
 
 export default class Reservations extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+<<<<<<< HEAD
 			test: []
+=======
+			test: "",
+			reservation: "",
+			guest: "",
+			creditcard: ""
+>>>>>>> 0ea893a (setup post apis)
 		};
 	}
 
@@ -18,10 +32,39 @@ export default class Reservations extends React.Component {
 		getGuest().then(response => {
 			console.log("get test entered")
 			console.log(response)
+<<<<<<< HEAD
 			this.setState({ test: response.data })
 			console.log("yoyo", this.state.test)
 			var heading = ['Guest Id', 'First Name', 'Last Name', 'Address', 'Email', 'Phone Number'];
 			var body = this.state.test
+=======
+			this.setState({ test: response.request.response })
+			console.log("yoyo1", this.state.test)
+
+		})
+
+		getReservation().then(response => {
+			console.log("get reservation entered")
+			console.log(response)
+			this.setState({ reservation: response.request.response })
+			console.log("yoyo2", this.state.reservation)
+
+		})
+
+		getCreditCard().then(response => {
+			console.log("get credit entered")
+			console.log(response)
+			this.setState({ creditcard: response.request.response })
+			console.log("yoyo3", this.state.creditcard)
+
+		})
+
+		getGuest().then(response => {
+			console.log("get guest entered")
+			console.log(response)
+			this.setState({ guest: response.request.response })
+			console.log("yoyo4", this.state.guest)
+>>>>>>> 0ea893a (setup post apis)
 
 		})
 		this.initTheme();
@@ -38,10 +81,38 @@ export default class Reservations extends React.Component {
 		var body = this.state.test;
 		return (
 			<div className="reservations-background">
+<<<<<<< HEAD
 				<div className="card-wrapper">
 					<Table heading={heading} body={body} />
 				</div>
 
+=======
+				<h1 style={{ padding: "15px" }}>All Reservations!!</h1>
+				<p style={{ color: "white", padding: "15px" }}>
+					TEST API RESULTS: {this.state.test}
+				</p>
+				<p style={{ color: "white", padding: "15px" }}>
+					TEST API RESULTS: {this.state.guest}
+				</p>
+				<p style={{ color: "white", padding: "15px" }}>
+					TEST API RESULTS: {this.state.creditcard}
+				</p>
+				<p style={{ color: "white", padding: "15px" }}>
+					TEST API RESULTS: {this.state.reservation}
+				</p>
+				<Container>
+					<Row>
+						<Col>
+							<ReservationCard />
+						</Col>
+					</Row>
+					<Row className="cards-structure">
+						<Col>
+							<ReservationCard />
+						</Col>
+					</Row>
+				</Container>
+>>>>>>> 0ea893a (setup post apis)
 			</div>
 		);
 	}
