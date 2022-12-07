@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import EmployeeCard from "../../Components/EmployeeCard/EmployeeCard";
 import "./employees.css";
-import { getEmployee } from "../../api/test.api";
+import { getEmployeeCustView } from "../../api/test.api";
 import { Link} from 'react-router-dom';
 
-export default class Employees extends React.Component {
+export default class EmployeeCustomer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +16,7 @@ export default class Employees extends React.Component {
     componentDidMount() {
         console.log("componentDidMount entered")
 
-        getEmployee().then(response => {
+        getEmployeeCustView().then(response => {
             console.log(response)
             this.setState({ test: response.data })
             console.log("yoyo", this.state.test)
@@ -35,7 +35,7 @@ export default class Employees extends React.Component {
       }
 
     render() {
-        var heading = ['Employee Id', 'First Name', 'Last Name', 'Address', 'Email', 'Cell Phone Number', 'Role', 'SSN'];
+        var heading = ['Employee Id', 'First Name', 'Last Name', 'Email', 'Role', 'Cell Phone #'];
         var body = this.state.test
         
         return (
@@ -44,7 +44,7 @@ export default class Employees extends React.Component {
                     <Table heading={heading} body={body} />
                 </div>
                 <Button className="task-button" outline color="warning">
-                    <Link className="button-link" to="/employees/customer">See Employee Information (Customer View)</Link>
+                    <Link className="button-link" to="/employees">See Employee Information (Employee View)</Link>
                 </Button>{' '}
 
             </div>

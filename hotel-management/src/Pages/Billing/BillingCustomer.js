@@ -5,7 +5,7 @@ import "./billing.css";
 import { getBilling } from "../../api/test.api";
 import { Link} from 'react-router-dom';
 
-export default class Billing extends React.Component {
+export default class BillingCustomer extends React.Component {
     constructor(props) {
 		super(props);
 		this.state = {
@@ -19,7 +19,17 @@ export default class Billing extends React.Component {
 		getBilling().then(response => {
 			console.log(response)
 			this.setState({ test: response.data })
-			console.log("billing", this.state.test)
+			for (var i = 0; i < response.data.length; i++) {
+                console.log("hihi")
+                if (response.data[i][2] == "HARRY") {
+                    console.log("ello",response.data[i])
+					test.push(response.data[i])
+					this.setState({test:response.data[i]})
+					console.log(test[i])
+					
+                }
+            }
+			console.log("bruv", this.state.test)
 			
 
 		})
@@ -40,7 +50,7 @@ export default class Billing extends React.Component {
 					<Table heading={heading} body={body} />
 				</div>
 				{/* <Button className="task-button" outline color="warning">
-                    <Link className="button-link" to="/billing/customer">See Billing Information (Harry's View)</Link>
+                    <Link className="button-link" to="/billing">See Billing Information (Admin View)</Link>
                 </Button>{' '} */}
 
 			</div>
