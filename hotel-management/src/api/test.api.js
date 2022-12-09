@@ -20,6 +20,15 @@ export const getEmployee = () => {
 	})
 }
 
+export const getEmployeeCustView = () => {
+	return axios({
+		url: websitePrefix + "api/employee/customer",
+		method: "GET",
+		headers: { "Content-Type": "application/json" },
+		mode: "cors",
+	})
+}
+
 export const getBilling = () => {
 	return axios({
 		url: websitePrefix + "api/billing",
@@ -28,3 +37,4 @@ export const getBilling = () => {
 		mode: "cors",
 	})
 }
+

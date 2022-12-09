@@ -42,6 +42,19 @@ def get_employee():
 
     return jsonify(data[-1])
 
+@app.route("/api/employee/customer", methods=["GET"])
+def get_employee_customer():
+    ex = Executer("shipping_db.sqlite")
+
+    data = ex.fetch_data("Guest_View_Employee2")
+    print("employee data:")
+    print(data)
+
+    ex.commit()
+    ex.close_connection()
+
+    return jsonify(data[-1])
+
 @app.route("/api/billing", methods=["GET"])
 def get_credit_card():
     ex = Executer("shipping_db.sqlite")
