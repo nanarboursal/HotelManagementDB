@@ -16,7 +16,7 @@ def index():
 
 @app.route("/api/guest", methods=["GET"])
 def get_guest():
-    ex = Executer("shipping_db.sqlite")
+    ex = Executer("project_db.sqlite")
 
     data = ex.fetch_data("GUEST")
     print("guest data:")
@@ -30,7 +30,7 @@ def get_guest():
 
 @app.route("/api/employee", methods=["GET"])
 def get_employee():
-    ex = Executer("shipping_db.sqlite")
+    ex = Executer("project_db.sqlite")
 
     data = ex.fetch_data("EMPLOYEE")
     print("employee data:")
@@ -41,9 +41,10 @@ def get_employee():
 
     return jsonify(data[-1])
 
+
 @app.route("/api/billing", methods=["GET"])
 def get_credit_card():
-    ex = Executer("shipping_db.sqlite")
+    ex = Executer("project_db.sqlite")
 
     data = ex.fetch_data("CREDIT_CARD")
     print("CREDIT_CARD data:")
