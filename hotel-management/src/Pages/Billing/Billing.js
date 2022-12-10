@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from "reactstrap";
 import BillingCard from "../../Components/BillingCard/BillingCard";
 import "./billing.css";
 import { getBilling } from "../../api/test.api";
+import { Link} from 'react-router-dom';
 
 export default class Billing extends React.Component {
     constructor(props) {
@@ -38,6 +39,9 @@ export default class Billing extends React.Component {
 				<div className="card-wrapper">
 					<Table heading={heading} body={body} />
 				</div>
+				{/* <Button className="task-button" outline color="warning">
+                    <Link className="button-link" to="/billing/customer">See Billing Information (Harry's View)</Link>
+                </Button>{' '} */}
 
 			</div>
 		);

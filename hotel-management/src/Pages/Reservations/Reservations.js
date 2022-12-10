@@ -2,13 +2,19 @@ import React, { Component } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import "./reservations.css";
 import ReservationCard from "../../Components/ReservationCard/ReservationCard";
-import { getGuest } from "../../api/test.api";
+import { getEmployee } from "../../api/employee.api";
+import { getReservation } from "../../api/reservation.api";
+import { getCreditCard } from "../../api/credit_card.api";
+import { getGuest } from "../../api/guest.api";
 
 export default class Reservations extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			test: []
+			test: [],
+			reservation: "",
+			guest: "",
+			creditcard: ""
 		};
 	}
 
@@ -22,6 +28,30 @@ export default class Reservations extends React.Component {
 			console.log("yoyo", this.state.test)
 			var heading = ['Guest Id', 'First Name', 'Last Name', 'Address', 'Email', 'Phone Number'];
 			var body = this.state.test
+
+		})
+
+		getReservation().then(response => {
+			console.log("get reservation entered")
+			console.log(response)
+			this.setState({ reservation: response.request.response })
+			console.log("yoyo2", this.state.reservation)
+
+		})
+
+		getCreditCard().then(response => {
+			console.log("get credit entered")
+			console.log(response)
+			this.setState({ creditcard: response.request.response })
+			console.log("yoyo3", this.state.creditcard)
+
+		})
+
+		getGuest().then(response => {
+			console.log("get guest entered")
+			console.log(response)
+			this.setState({ guest: response.request.response })
+			console.log("yoyo4", this.state.guest)
 
 		})
 		this.initTheme();
@@ -51,7 +81,7 @@ class Table extends Component {
 		var heading = this.props.heading;
 		var body = this.props.body;
 		return (
-			<table className ="center-table" style={{ width: 500 }}>
+			<table className ="center-table" style={{ width: 900 }}>
 				<thead >
 					<tr className ='rowLines'>
 						{heading.map(head => <th>{head}</th>)}
